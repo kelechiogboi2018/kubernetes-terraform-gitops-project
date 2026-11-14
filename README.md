@@ -381,11 +381,6 @@ kubectl get pods -n argocd
 ### Grafana OOMKilled recovery
 
 Earlier, the Grafana container reported `OOMKilled` with exit code `137`. Its configured memory limit was `256Mi`, with a `128Mi` memory request. A subsequent verification showed a replacement Grafana Pod `3/3 Running` with zero restarts. This confirms current recovery but does not establish that memory pressure cannot recur. For a repeat failure, inspect `kubectl describe pod`, memory usage, node capacity and Helm values before increasing resource limits.
-
-## Portfolio demonstration
-
-See [`DEMO-VIDEO-SCRIPT.md`](DEMO-VIDEO-SCRIPT.md) for a timed three-minute narration, shot list, on-screen commands and recording checklist. The script is ready for an OBS screen recording; an actual screen-capture video requires recording the live cluster and dashboard.
-
 ### Updated project outcome
 
 The extended lab demonstrates **Infrastructure as Code, GitOps continuous delivery, Kubernetes workload recovery, and observability**. Verified evidence includes Nginx `3/3` ready replicas, Argo CD `Synced/Healthy`, a recovered ApplicationSet controller, and a running Prometheus/Grafana stack. The environment remains a cost-conscious **local kind cluster**, not an AWS-hosted production system.
